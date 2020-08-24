@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apis code express</title>
+</head>
+<body>
+    <h1 class="text-center">Get from an API express server</h1>
+    <table class="table table-sm table-striped table-hover">
+        <tbody id="body">
+            <!-- Api -->
+        </tbody>
+        
+    </table>
+
+    <script>
+        fetch("http://localhost:7000/api/").then(
+            res=>{
+                res.json().then(
+                    data => {
+                        if(data.length > 0){
+                            var temp = ''
+                            data.forEach((user)=>{
+                                temp += '<tr>'
+                                    temp += '<td>'+ user.name +'</td>'
+                                temp += '</tr>'
+                            })
+                            document.getElementById('body').innerHTML = temp
+                        }
+                    }
+                )
+            }
+        )
+    </script>
+</body>
+</html>

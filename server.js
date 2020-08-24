@@ -7,14 +7,13 @@ const PORT = process.env.PORT || 7000
 const routers = require('./routes/posts')
 const db = require('./models/')
 
-app.use('/', routers)
+app.get('/', (req, res)=>{
+    res.send('Welcome to my APIs go to this link localhost:7000/Api and enjoy that')
+})
+app.use('/api', routers)
 
-app.use( async (req, res)=>{
-    let sql = `SELECT * FROM users`
-    await db.query(sql, (err, result)=>{
-        if(err) throw err
-        res.json({data: result})
-    })
+app.use((req, res)=>{
+    res.send('Page not found')
 })
 
 app.listen(PORT, (err)=>{
