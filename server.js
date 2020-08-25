@@ -1,7 +1,9 @@
 const exp = require('express')
+// what does require are for?  {fs/url/path}
 const fs = require('fs')
 const url = require('url')
 const path = require('path')
+// dont thisnk you are in needof those  {fs/url/path}
 const app = exp()
 const PORT = process.env.PORT || 7000
 const routers = require('./routes/posts')
