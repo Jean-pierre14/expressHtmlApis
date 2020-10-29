@@ -1,7 +1,7 @@
 const exp = require('express')
 const cors = require('cors')
 const app = exp()
-const PORT = process.env.PORT || 7000
+const PORT = process.env.PORT || 3000
 const routers = require('./routes/posts')
 const db = require('./models/')
 
