@@ -7,50 +7,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 <body>
-    <h1 class="text-center">Get data from an API express server 
-        <p class="btn btn-sm btn-success shadow">Nodejs</p>
-    </h1>
-
-    <a href="add.html" class="btn btn-sm btn-warning shadow">Add</a>
-
-    <table class="table table-sm table-bordered table-striped table-hover">
-        <thead class="bg-success">
-            <tr>
-                <th>Id</th>
-                <th>username</th>
-                <th>name</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody id="body">
-            <!-- Api -->
-        </tbody>
-    </table>
-
-    
-
-    <script>
-        fetch("http://localhost:3000/api").then(res=>{
-            res.json().then(data=>{
-                
-                if(data.length > 0){
-                    var out = ''
-                    data.forEach(user=>{
-                        out += `
-                        <tr>
-                            <td>${user.id}</td>
-                            <td>${user.name}</td>
-                            <td>${user.email}</td>
-                            <td>${user.phone_no}</td>
-                        </tr>
-                        `
-                    })
-                    document.getElementById('body').innerHTML = out
-                }
-            }).catch(err=>{
-                if(err) throw err
-            })
-        })
-    </script>
+    <div class="conrainer py-5">
+        <a href="add.html" class="btn btn-sm btn-warning">Add new</a>
+        <div class="table-responsive">
+            <table class="table table-sm table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
