@@ -1,9 +1,11 @@
-const exp = require('express')
-const cors = require('cors')
-const app = exp()
-const PORT = process.env.PORT || 3000
-const routers = require('./routes/posts')
-const db = require('./models/')
+const exp = require('express'),
+    cors = require('cors'),
+    { success, error } = require('consola'),
+    dotenv = require('dotenv').config(),
+    app = exp(),
+    PORT = process.env.PORT || 3000,
+    routers = require('./routes/posts'),
+    db = require('./models/')
 
 app.use(cors())
 
@@ -17,6 +19,6 @@ app.use((req, res) => {
 })
 
 app.listen(PORT, (err) => {
-    if (err) throw err
-    console.log(`Server start on port ${PORT}`)
+    if (err) throw error({ message: `Error: ${err}`, badge: true })
+    success({ message: `Server start on port ${PORT}`, badge: true })
 })
