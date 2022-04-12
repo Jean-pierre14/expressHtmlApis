@@ -25,7 +25,15 @@ const createUser = async(req, res) => {
             if (password.length <= 4) {
                 res.status(500).json({ message: 'Password must have at least 6 characters' })
             } else {
-                res.json({ message: "Good job" })
+                let sql = `SELECT * FROM users WHERE username = ${username}`
+                db.query(sql, (err, data) => {
+                    if (err) throw err
+                    if (data.length > 1) {
+                        res.json({ message: `This Username is taken ${username}` })
+                    } else {
+                        res.json({ message: "Good job" })
+                    }
+                })
             }
         }
     }
