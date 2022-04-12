@@ -12,20 +12,20 @@ const getUsers = async(req, res) => {
 }
 
 
-const createUsers = async(req, res) => {
+const createUser = async(req, res) => {
     res.json({ message: 'Create User' })
 }
 
-const updateUsers = async(req, res) => {
+const updateUser = async(req, res) => {
     res.json({ message: `Update User ${req.params.id}` })
 }
-const deleteUsers = async(req, res) => {
+const deleteUser = async(req, res) => {
     res.json({ message: `Delete User ${req.params.id}` })
 }
 
 module.exports = {
     getUsers,
-    createUsers,
-    updateUsers,
-    deleteUsers
+    createUser,
+    updateUser,
+    deleteUser
 }
