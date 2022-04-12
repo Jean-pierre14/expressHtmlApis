@@ -4,8 +4,7 @@ const exp = require('express'),
     dotenv = require('dotenv').config(),
     app = exp(),
     PORT = process.env.PORT || 3000,
-    routers = require('./routes/posts'),
-    db = require('./models/')
+    routers = require('./routes/userCrud')
 
 app.use(cors())
 

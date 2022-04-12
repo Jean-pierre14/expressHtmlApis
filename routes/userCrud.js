@@ -1,5 +1,5 @@
 const exp = require('express'),
-    router = exp().Router(),
+    router = exp.Router(),
     { getUsers, createUser, updateUser, deleteUser } = require('../controllers/userCrudEvent')
 
 router.route('/').get(getUsers).post(createUser)

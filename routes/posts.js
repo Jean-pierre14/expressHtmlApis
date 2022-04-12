@@ -1,13 +1,30 @@
-const exp = require('express')
-const router = exp.Router()
-const db = require('../models/')
+const exp = require('express'),
+    router = exp.Router(),
+    { getUsers, createUsers, updateUsers, deleteUsers } = require('../controllers/userCrudEvent')
 
-router.get('/', async(req, res) => {
-    let sql = `SELECT * FROM users ORDER BY id DESC`
-    await db.query(sql, (err, data) => {
-        if (err) throw err
-        res.json({ data })
-    })
-})
+// @Desc the endpoint of the api
+// @Route /api
+// @Role to get all users
+router.get('/', getUsers)
+
+
+// @Desc the endpoint of the api
+// @Route /api
+// @Role to get all users
+router.get('/', createUsers)
+
+
+// @Desc the endpoint of the api
+// @Route /api
+// @Role to get all users
+router.get('/:id', updateUsers)
+
+
+// @Desc the endpoint of the api
+// @Route /api
+// @Role to get all users
+router.get('/:id', deleteUsers)
+
+
 
 module.exports = router

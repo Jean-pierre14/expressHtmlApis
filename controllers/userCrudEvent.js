@@ -1,10 +1,16 @@
+const db = require('../models/')
+
+// @desc Get all users
+// @Route /api
+// @privilegies
 const getUsers = async(req, res) => {
     let sql = `SELECT * FROM users ORDER BY id DESC`
     await db.query(sql, (err, data) => {
         if (err) throw err
-        res.json({ data })
+        res.json({ datas: data })
     })
 }
+
 
 const createUsers = async(req, res) => {
     res.json({ message: 'Create User' })
@@ -19,4 +25,7 @@ const deleteUsers = async(req, res) => {
 
 module.exports = {
     getUsers,
+    createUsers,
+    updateUsers,
+    deleteUsers
 }
