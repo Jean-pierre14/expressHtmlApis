@@ -7,6 +7,8 @@ const exp = require('express'),
     routers = require('./routes/userCrud')
 
 app.use(cors())
+app.use(exp.json())
+app.use(exp.urlencoded({ extends: false }))
 
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to my APIs go to this link localhost:7000/Api and enjoy that' })

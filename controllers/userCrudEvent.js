@@ -13,7 +13,23 @@ const getUsers = async(req, res) => {
 
 
 const createUser = async(req, res) => {
-    res.json({ message: 'Create User' })
+
+    const { username, email, password, unique_id } = req.body
+
+    if (!username && !email && !password) {
+        res.status(500).json({ message: 'Please fields in all fields' })
+    } else {
+        if (username.length < 3) {
+            res.status(500).json({ message: 'Invalid Username' })
+        } else {
+            if (password.length <= 4) {
+                res.status(500).json({ message: 'Password must have at least 6 characters' })
+            } else {
+                res.json({ message: "Good job" })
+            }
+        }
+    }
+
 }
 
 const updateUser = async(req, res) => {
