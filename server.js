@@ -10,10 +10,14 @@ app.use(cors())
 app.use(exp.json())
 app.use(exp.urlencoded({ extends: false }))
 
+// @Desc A welcome to the API
+// This doen't work
+// It's show only the message where to find the api/ documentation :)
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to my APIs go to this link localhost:7000/Api and enjoy that' })
 })
 
+// Router to our APIs
 app.use('/api', routers)
 
 app.use((req, res) => {
