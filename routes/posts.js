@@ -11,7 +11,7 @@ router.get('/', getUsers)
 // @Desc the endpoint of the api
 // @Route /api
 // @Role to get all users
-router.get('/', createUsers)
+router.post('/', createUsers)
 
 
 // @Desc the endpoint of the api

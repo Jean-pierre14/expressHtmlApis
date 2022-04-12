@@ -2,8 +2,12 @@ const exp = require('express'),
     router = exp.Router(),
     { getUsers, createUser, updateUser, deleteUser } = require('../controllers/userCrudEvent')
 
-router.route('/').get(getUsers).post(createUser)
+router.get('/', getUsers)
 
-router.route('/:id').put(updateUser).delete(deleteUser)
+// router.post('/', createUser)
+
+// router.route('/:id').put(updateUser).delete(deleteUser)
+
+router.put('/:id', updateUser)
 
 module.exports = router

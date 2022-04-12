@@ -9,7 +9,7 @@ const exp = require('express'),
 app.use(cors())
 
 app.get('/', (req, res) => {
-    res.send('Welcome to my APIs go to this link localhost:7000/Api and enjoy that')
+    res.json({ message: 'Welcome to my APIs go to this link localhost:7000/Api and enjoy that' })
 })
 app.use('/api', routers)
 
