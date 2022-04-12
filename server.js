@@ -11,6 +11,7 @@ app.use(cors())
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to my APIs go to this link localhost:7000/Api and enjoy that' })
 })
+
 app.use('/api', routers)
 
 app.use((req, res) => {
