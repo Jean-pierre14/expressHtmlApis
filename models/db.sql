@@ -7,7 +7,7 @@ CREATE TABLE department(
     PRIMARY KEY(id)
 );
 
-INSERT INTO department(name) VALUES('HR', 'CTO', 'CEO', 'SIMPLE-USER');
+INSERT INTO department(name) VALUES('HR'), ('CTO'), ('CEO'), ('SIMPLE-USER');
 
 CREATE TABLE users(
     id INT NOT NULL AUTO_INCREMENT,
@@ -25,7 +25,7 @@ CREATE TABLE users(
     FOREIGN KEY (department_id) REFERENCES department(Id)
 );
 
-INSERT INTO users(username, fullname, email, pass, salary, unique_id) 
-            VALUES('Grace', 'Bisimwa Jean-pierre', 'chiru@gmail.com', '12345678', 58500, 2),
-                    ('Adolf', 'Pierre', 'chiru2@gmail.com', '12005678', 10500, 1),
-                    ('Elena23', 'Elena', 'chiru3@gmail.com', '12005008', 1000, 3);
+INSERT INTO users(username, fullname, email, pass, salary, unique_id, department_id) 
+            VALUES('Grace', 'Bisimwa Jean-pierre', 'chiru@gmail.com', '12345678', 58500, 'ED2022', 2),
+                    ('Adolf', 'Pierre', 'chiru2@gmail.com', '12005678', 10500, 'EG2022', 1),
+                    ('Elena23', 'Elena', 'chiru3@gmail.com', '12005008', 1000, 'EA2022', 3);

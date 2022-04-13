@@ -4,7 +4,19 @@ const db = require('../models/')
 // @Route /api
 // @privilegies
 const getUsers = async(req, res) => {
-    let sql = `SELECT * FROM users ORDER BY id DESC`
+        let sql = `SELECT * FROM users ORDER BY id DESC`
+        await db.query(sql, (err, data) => {
+            if (err) throw err
+            res.json({ datas: data })
+        })
+    }
+    // @desc Get one user
+    // @Route /api
+    // @privilegies
+const getUser = async(req, res) => {
+    const Id = req.params.id;
+    const TId = Id.trim();
+    let sql = `SELECT * FROM users WHERE id= ${TId}`
     await db.query(sql, (err, data) => {
         if (err) throw err
         res.json({ datas: data })
@@ -14,7 +26,7 @@ const getUsers = async(req, res) => {
 
 const createUser = async(req, res) => {
 
-    const { username, email, password, unique_id } = req.body
+    const { username, fullname, email, password, unique_id } = req.body
 
     if (!username && !email && !password) {
         res.status(500).json({ message: 'Please fields in all fields' })
@@ -25,13 +37,22 @@ const createUser = async(req, res) => {
             if (password.length <= 4) {
                 res.status(500).json({ message: 'Password must have at least 6 characters' })
             } else {
-                let sql = `SELECT * FROM users WHERE username = ${username}`
+                let sql = `SELECT * FROM users WHERE username = '${username}'`
                 db.query(sql, (err, data) => {
                     if (err) throw err
                     if (data.length > 1) {
                         res.json({ message: `This Username is taken ${username}` })
                     } else {
-                        res.json({ message: "Good job" })
+                        let pass = password;
+                        let d = new Date('Y-m-d');
+                        let y = d.getFullYear()
+
+                        let SQL = `INSERT INTO users(username, fullname, email, pass, salary, department_id)
+                                                VALUES('${username}','${fullname}','${email}','${pass}', 2000, 4)`
+                        db.query(SQL, (err, result) => {
+                            if (err) throw err
+                            res.json({ message: `Resultats ${result}` })
+                        })
                     }
                 })
             }
@@ -49,6 +70,7 @@ const deleteUser = async(req, res) => {
 
 module.exports = {
     getUsers,
+    getUser,
     createUser,
     updateUser,
     deleteUser
