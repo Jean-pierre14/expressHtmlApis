@@ -40,11 +40,19 @@
             </div>
             <div class="col-md-8">
                 <h3>Datas</h3>
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="img">Browser</label>
+                        <input type="file" name="img" accept="img, jpg, jpeg, gif" id="img" class="form-control">
+                    </div>
+                </form>
                 <div id="result"></div>
             </div>
         </div>
     </div>
 </body>
+
+<script src="./javascript.js"></script>
 
 <script>
     fetch('http://localhost:7000/api')
@@ -52,9 +60,7 @@
         .then(data => {
             if (data.datas.length > 0) {
                 let out = ''
-                foreach(user => {
-                    out += `${user.username}`
-                })
+
                 document.getElementById('result').innerHTML = out
             } else {
                 console.log('Empty')
