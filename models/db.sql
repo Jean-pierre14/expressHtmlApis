@@ -1,15 +1,15 @@
 CREATE DATABASE node;
 USE node;
 
-CREATE TABLE department{
+CREATE TABLE department(
     Id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     PRIMARY KEY(id)
-};
+);
 
 INSERT INTO department(name) VALUES('HR', 'CTO', 'CEO', 'SIMPLE-USER');
 
-CREATE TABLE users{
+CREATE TABLE users(
     id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(255) NOT NULL,
     fullname VARCHAR(255) NOT NULL,
@@ -19,11 +19,11 @@ CREATE TABLE users{
     unique_id VARCHAR(255) NOT NULL,
     auth_id INT,
     department_id INT NOT NULL,
-    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-    PRIMARY KEY(id)
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(id),
     FOREIGN KEY (auth_id) REFERENCES users(id),
     FOREIGN KEY (department_id) REFERENCES department(Id)
-};
+);
 
 INSERT INTO users(username, fullname, email, pass, salary, unique_id) 
             VALUES('Grace', 'Bisimwa Jean-pierre', 'chiru@gmail.com', '12345678', 58500, 2),
