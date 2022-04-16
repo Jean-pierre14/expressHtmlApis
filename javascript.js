@@ -55,4 +55,29 @@ Notification.requestPermission(() => {
     } else {
         alert('Default')
     }
+    // Notification.close()
 })
+
+// Vibration
+window.navigator.vibrate(100)
+
+
+// Battery
+
+navigator.getBattery().then((battery) => {
+
+    battery.addEventListener('chargingChange', function() {
+        console.log(`New charging battery ${battery.charging}`)
+    })
+
+    battery.addEventListener('levelChange', function() {
+        console.log(`New battery level: ${battery.level * 100}%`)
+    })
+})
+
+const EventClient = document.getElementById('Event'),
+    text = document.getElementById('text')
+
+EventClient.onclick = () => {
+    alert(text.value)
+}

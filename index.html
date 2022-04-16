@@ -46,6 +46,17 @@
                         <input type="file" name="img" accept="" multiple id="img" class="form-control">
                     </div>
                 </form>
+                <form action="#" method="post">
+                    <div class="card my-3 card-body">
+                        <div class="form-group">
+                            <label for="text">Text</label>
+                            <textarea name="text" id="text" placeholder="Enter your text..." class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button id="Event" type="button" class="btn btn-primary">Click me</button>
+                        </div>
+                    </div>
+                </form>
                 <div id="result"></div>
             </div>
         </div>
@@ -55,17 +66,17 @@
 <script src="./javascript.js"></script>
 
 <script>
-    fetch('http://localhost:7000/api')
-        .then(res => res.json())
-        .then(data => {
-            if (data.datas.length > 0) {
-                let out = ''
+    // fetch('http://localhost:7000/api')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         if (data.datas.length > 0) {
+    //             let out = ''
 
-                document.getElementById('result').innerHTML = out
-            } else {
-                console.log('Empty')
-            }
-        })
+    //             document.getElementById('result').innerHTML = out
+    //         } else {
+    //             console.log('Empty')
+    //         }
+    //     })
 </script>
 
 </html>
