@@ -2,6 +2,18 @@ const results = document.getElementById('result')
     // Init function
 const Init = () => {
     SelectAll()
+    Post()
+}
+
+// Post
+
+const Post = () => {
+    const Event = document.getElementById('Event')
+
+    Event.onclick = () => {
+        e.preventDefault()
+        alert("Click")
+    }
 }
 
 // Select all datas
@@ -25,7 +37,10 @@ const SelectAll = () => {
                 results.innerHTML = '<p class="alert alert-danger">There is no data</p>'
             }
         })
+        .catch(e => results.innerHTML = `<p class="alert alert-danger">Error</p>`)
 }
+
+
 
 
 Init()
