@@ -77,6 +77,7 @@ app.post('/save', (req, res) => {
     };
     let sql = "INSERT INTO users SET ?";
     let query = connection.query(sql, data, (err, results) => {
+
         if (err) throw err
         res.redirect('/');
     });
@@ -84,6 +85,7 @@ app.post('/save', (req, res) => {
 
 // post update
 app.post('/update', (req, res) => {
+
         let name = req.body.name;
         let email = req.body.email;
         let phone = req.body.phone;

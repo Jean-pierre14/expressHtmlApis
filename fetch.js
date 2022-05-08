@@ -24,20 +24,35 @@ const SelectAll = () => {
         .then(data => {
             if (data.datas.length > 0) {
 
+                let output = ''
+                output += '<div class="row">'
+
                 data.datas.forEach(element => {
-                    results.innerHTML += `
-                    <div id="${element.id}" class="card shadow-sm my-2">
+                    output += `
+                    <div id="${element.id}" class="col-md-6 p-1">
+                        <div class=" card shadow-sm">
                         <div class="card-body">
-                            <p>${element.username}</p>
+                            <p>${element.name}</p>
                             <p>${element.email}</p>
+                            <p class="d-flex justify-content-between">
+                                <small>${element.phone_no}</small>
+                                <a href="#${element.id}" class="btn btn-sm btn-primary">Voir plus</a>
+                            </p>
+                        </div>
                         </div>
                     </div>`
                 });
+
+                output += '</div>'
+
+                results.innerHTML = output
+
             } else {
-                results.innerHTML = '<p class="alert alert-danger">There is no data</p>'
+                output = '<p class="alert alert-danger">There is no data</p>'
             }
         })
-        .catch(e => results.innerHTML = `<p class="alert alert-danger">Error</p>`)
+        .catch(e => results.innerHTML = `<p class="alert alert-danger">You\'re not connecte to the server</p>`)
+
 }
 
 

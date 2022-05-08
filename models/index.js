@@ -8,7 +8,7 @@ const mysql = require('mysql'),
     })
 
 db.connect((err, result) => {
-    if (err) throw error({ message: `Error of the DB ${err}` })
+    if (err) throw err
     success({ message: `Connected to MySql DB `, badge: true })
 })
 
