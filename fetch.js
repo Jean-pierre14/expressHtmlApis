@@ -2,19 +2,48 @@ const results = document.getElementById('result')
     // Init function
 const Init = () => {
     SelectAll()
-    Post()
 }
+
+function intMain() {
+    this.name = 'Grace\'s';
+    this.sound = 'diane';
+    console.log("Welcome to sniper code...")
+}
+
+intMain.constructor
+
 
 // Post
 
-const Post = () => {
-    const Event = document.getElementById('Event')
+const myForm = document.getElementById('myForm')
 
-    Event.onclick = () => {
-        e.preventDefault()
-        alert("Click")
-    }
-}
+
+/**
+ * La meilleur facon d'utiliser le javascript ce d'utilise les ex method
+ */
+
+myForm.addEventListener('click', function(e) {
+
+    e.preventDefault()
+
+    const formData = new FormData(this);
+
+    fetch('http://localhost:7000/', {
+            method: 'POST',
+            mode: 'cors',
+            body: formData
+        })
+        .then(function(response) {
+            return response.text()
+        })
+        .then(function(text) {
+
+            console.log(text)
+
+        })
+        .catch(error => console.log('Error' + error))
+
+})
 
 // Select all datas
 
@@ -54,8 +83,5 @@ const SelectAll = () => {
         .catch(e => results.innerHTML = `<p class="alert alert-danger">You\'re not connecte to the server</p>`)
 
 }
-
-
-
 
 Init()

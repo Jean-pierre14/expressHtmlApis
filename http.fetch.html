@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP</title>
+</head>
+
+<body>
+
+    <main>
+        <h3>CRUD</h3>
+        <div class="">
+            <form action="#" method="post" id="myForm">
+                <input type="text" name="name" id="name">
+                <input type="text" name="email" id="name">
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        var myForm = document.getElementById('myForm');
+
+        myForm.onsubmit = (e) => {
+
+            e.preventDefault();
+
+            const formData = new FormData(document.getElementById('myForm'));
+
+            fetch('http://localhost:7000/', {
+                    method: 'POST',
+                    mode: 'cors',
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => console.log(data.text()))
+                .catch(e => console.log(e));
+            console.log(formData);
+        }
+    </script>
+</body>
+
+</html>

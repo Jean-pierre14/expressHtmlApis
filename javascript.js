@@ -76,8 +76,11 @@ navigator.getBattery().then((battery) => {
 })
 
 const EventClient = document.getElementById('Event'),
-    text = document.getElementById('text')
+    text = document.getElementById('text');
+
 
 EventClient.onclick = () => {
+
     alert(text.value) // This is just for test if the event works correctly
+
 }
