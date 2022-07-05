@@ -22,28 +22,30 @@ const myForm = document.getElementById('myForm')
  * La meilleur facon d'utiliser le javascript ce d'utilise les ex method
  */
 
-myForm.addEventListener('click', function(e) {
+myForm.onsubmit = (e) => {
 
-    e.preventDefault()
+    e.preventDefault();
 
-    const formData = new FormData(this);
+    const formData = new FormData(myForm);
 
-    fetch('http://localhost:7000/', {
+    const myDatas = new URLSearchParams(formData);
+
+    fetch('http://localhost:7000/api', {
             method: 'POST',
             mode: 'cors',
-            body: formData
+            body: myDatas
         })
-        .then(function(response) {
-            return response.text()
+        .then(res => res.json())
+        .then(data => {
+
+            myForm.reset();
+
+            SelectAll();
+
         })
-        .then(function(text) {
+        .catch(e => console.log(e));
 
-            console.log(text)
-
-        })
-        .catch(error => console.log('Error' + error))
-
-})
+}
 
 // Select all datas
 

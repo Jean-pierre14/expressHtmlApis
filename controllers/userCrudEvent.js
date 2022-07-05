@@ -26,7 +26,7 @@ const getUser = async(req, res) => {
 
 const createUser = async(req, res) => {
 
-    const { username, fullname, email, password, unique_id } = req.body
+    const { username, fullname, email, phone_no, password, unique_id } = req.body
 
     if (!username) {
 
@@ -52,7 +52,7 @@ const createUser = async(req, res) => {
 
                     if (err) throw err
 
-                    if (data.length > 1) {
+                    if (data.length > 0) {
 
                         res.json({ message: `This Username is taken ${username}` })
 
@@ -62,13 +62,13 @@ const createUser = async(req, res) => {
 
                         let d = new Date('Y-m-d');
 
-                        let y = d.getFullYear()
+                        let y = d.getFullYear();
 
-                        let SQL = `INSERT INTO users(username, fullname, email, pass, salary, department_id)
-                                                VALUES('${username}','${fullname}','${email}','${pass}', 2000, 4)`
-                        db.query(SQL, (err, result) => {
+                        let SQL = `INSERT INTO users(username, email, fullname, phone_no, password) VALUES(?, ?, ?, ?, ?)`;
+
+                        db.query(SQL, [username, email, fullname, phone_no, password], (err, result) => {
                             if (err) throw err
-                            res.json({ message: `Resultats ${result}` })
+                            res.json({ message: `Resultats ${result}` });
                         })
                     }
                 })

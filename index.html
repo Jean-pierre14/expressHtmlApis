@@ -15,7 +15,11 @@
         <div class="row my-3">
             <div class="col-md-4">
                 <div class="card card-body">
-                    <form id="myForm">
+                    <form id="myForm" method="post" action="#">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username" placeholder="Username: Bisimwa" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label for="fullname">Fullname</label>
                             <input type="text" name="fullname" id="fullname" placeholder="Fullname: Grace" class="form-control">
@@ -26,7 +30,11 @@
                         </div>
                         <div class="form-group">
                             <label for="tel">Phone</label>
-                            <input type="tel" name="phone" id="tel" placeholder="Tel: +24397363643" class="form-control">
+                            <input type="tel" name="phone_no" id="tel" placeholder="Tel: +24397363643" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" value="12345678@14" id="password" placeholder="password" class="form-control">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-block btn-primary">Register</button>
@@ -59,7 +67,7 @@
     </div>
 </body>
 
-<script src="./javascript.js"></script>
+<!-- <script src="./javascript.js"></script> -->
 <script src="./fetch.js"></script>
 
 </html>
