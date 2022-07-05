@@ -20,11 +20,11 @@ app.get('/', (req, res) => {
     res.json({ message: 'Welcome to my APIs go to this link localhost:7000/Api and enjoy that' })
 })
 
-app.post('/', (req, res) => {
+// Post request
+app.post('', (req, res) => {
 
-    const { name, email, phone } = req.body
+    console.log(req.body);
 
-    console.log("Name is: " + req.body.name)
 })
 
 // Router to our APIs

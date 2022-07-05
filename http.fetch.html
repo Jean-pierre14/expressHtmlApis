@@ -14,8 +14,8 @@
         <h3>CRUD</h3>
         <div class="">
             <form action="#" method="post" id="myForm">
-                <input type="text" name="name" id="name">
-                <input type="text" name="email" id="name">
+                <input type="text" name="name" value="Username" id="name">
+                <input type="text" name="email" value="Email" id="name">
                 <button type="submit">Register</button>
             </form>
         </div>
@@ -30,15 +30,18 @@
 
             const formData = new FormData(document.getElementById('myForm'));
 
+
+            const myDatas = new URLSearchParams(formData);
+
             fetch('http://localhost:7000/', {
                     method: 'POST',
                     mode: 'cors',
-                    body: formData
+                    body: myDatas
                 })
                 .then(res => res.json())
                 .then(data => console.log(data.text()))
                 .catch(e => console.log(e));
-            console.log(formData);
+
         }
     </script>
 </body>
