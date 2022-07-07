@@ -63,11 +63,12 @@ const SelectAll = () => {
                     <div id="${element.id}" class="col-md-6 p-1">
                         <div class=" card shadow-sm">
                         <div class="card-body">
-                            <p>${element.name}</p>
-                            <p>${element.email}</p>
+                            <p>Name: ${element.username}</p>
+                            <p>Email: ${element.email}</p>
                             <p class="d-flex justify-content-between">
+                                Phone: 
                                 <small>${element.phone_no}</small>
-                                <a href="#${element.id}" class="btn btn-sm btn-primary">Voir plus</a>
+                                <a href="?${element.id}" class="btn btn-sm btn-primary">Voir plus</a>
                             </p>
                         </div>
                         </div>
