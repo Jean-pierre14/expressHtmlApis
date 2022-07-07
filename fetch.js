@@ -7,7 +7,7 @@ const Init = () => {
 function intMain() {
     this.name = 'Grace\'s';
     this.sound = 'diane';
-    console.log("Welcome to sniper code...")
+    console.log("Welcome to sniper code...");
 }
 
 intMain.constructor
@@ -50,6 +50,7 @@ myForm.onsubmit = (e) => {
 // Select all datas
 
 const SelectAll = () => {
+
     fetch('http://localhost:7000/api')
         .then(res => res.json())
         .then(data => {
@@ -87,4 +88,4 @@ const SelectAll = () => {
 
 }
 
-Init()
+Init();
