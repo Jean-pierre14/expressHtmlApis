@@ -1,7 +1,12 @@
-const results = document.getElementById('result')
+
+
+let results = document.getElementById('result')
     // Init function
-const Init = () => {
-    SelectAll()
+const Init = async() => {
+    await SelectAll()
+        .then(() => {
+            getOne();
+        })
 }
 
 function intMain() {
@@ -47,11 +52,46 @@ myForm.onsubmit = (e) => {
 
 }
 
-// Select all datas
 
-const SelectAll = () => {
 
-    fetch('http://localhost:7000/api')
+const getOne = () => {
+        const get = document.querySelectorAll('.Get').forEach(el => {
+            el.onclick = (e) => {
+                const elementId = e.target.id;
+                console.log(elementId);
+                let result = document.getElementById('result');
+                result.innerHTML = '';
+
+                fetch(`http://localhost:7000/api/${elementId}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        let output = '';
+                        output = `
+                        <div id="${data.id}" class="col-md-6 p-1">
+                        <div class=" card shadow-sm">
+                        <div class="card-body">
+                            <p>Name: ${data.datas[0].username}</p>
+                            <p>Email: ${data.datas[0].email}</p>
+                            <p class="d-flex justify-content-between">
+                                Phone: 
+                                <small>${data.datas[0].phone_no}</small>
+                                <button id="${data.datas[0].id}" class="Get btn btn-sm btn-primary">Voir plus</button>
+                            </p>
+                        </div>
+                        </div>
+                    </div>`
+                        result.innerHTML = output;
+                    })
+                    .catch(e => console.log(e));
+
+            }
+        });
+    }
+    // Select all datas
+
+const SelectAll = async() => {
+    await fetch('http://localhost:7000/api')
         .then(res => res.json())
         .then(data => {
             if (data.datas.length > 0) {
@@ -69,7 +109,7 @@ const SelectAll = () => {
                             <p class="d-flex justify-content-between">
                                 Phone: 
                                 <small>${element.phone_no}</small>
-                                <a href="?${element.id}" class="btn btn-sm btn-primary">Voir plus</a>
+                                <button id="${element.id}" class="Get btn btn-sm btn-primary">Voir plus</button>
                             </p>
                         </div>
                         </div>
@@ -83,9 +123,10 @@ const SelectAll = () => {
             } else {
                 output = '<p class="alert alert-danger">There is no data</p>'
             }
+
+            console.log("Ajax request resolved");
         })
         .catch(e => results.innerHTML = `<p class="alert alert-danger">You\'re not connecte to the server</p>`)
 
 }
-
 Init();
