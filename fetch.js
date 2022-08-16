@@ -1,5 +1,3 @@
-
-
 let results = document.getElementById('result')
     // Init function
 const Init = async() => {
@@ -22,7 +20,6 @@ intMain.constructor
 
 const myForm = document.getElementById('myForm')
 
-
 /**
  * La meilleur facon d'utiliser le javascript ce d'utilise les ex method
  */
@@ -41,7 +38,7 @@ myForm.onsubmit = (e) => {
             body: myDatas
         })
         .then(res => res.json())
-        .then(data => {
+        .then(_ => { // Aulieu d'ecrire data alors qu'il ne sert a rien il faut faire un undescorer _ comme function retour
 
             myForm.reset();
 
